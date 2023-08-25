@@ -1,0 +1,69 @@
+# Input sample: {"amount":"6","item_id":"e3","shipping_address":"New York"}
+main:
+  params: [args]
+  steps:
+    - initVariables:
+        assign:
+          - cancel_shipping_output: ""
+          - cancel_order_output: ""
+        #   - body: ${args.resource}
+    - create-order:
+        call: http.post
+        args:
+            url: https://orders-service-hrqoscmbca-zf.a.run.app/order
+            auth:
+                type: OIDC
+            body:
+                item_id: ${args.item_id}
+                amount: ${args.amount}
+                shipping_address: ${args.shipping_address}
+        result: order_result
+    - order-success?:
+        switch:
+            - condition: ${len(text.find_all(json.encode_to_string(order_result.body),"error"))>0}
+              call: cancel_order_sub
+              args:
+                input: "Kristof"
+              result: cancel_order_output
+              next: return_cancellation
+        next: create-shipping
+    - create-shipping:
+        call: http.post
+        args:
+            url: https://shipping-service-hrqoscmbca-zf.a.run.app/shipment
+            auth:
+                type: OIDC
+            body:
+                address: ${args.shipping_address}
+                item_id: ${args.item_id}
+        result: shipping_result
+    - shipping-success?:
+        switch:
+            - condition: ${len(text.find_all(json.encode_to_string(shipping_result.body),"error"))>0}
+              call: cancel_shipping_sub
+              args:
+                input: "Olaf"
+              result: cancel_shipping_output
+              next: return_cancellation
+        next: return_result
+    - return_result:
+        return: ${shipping_result}
+    - return_cancellation:
+        return: ${cancel_shipping_output + " " + cancel_order_output}
+        
+
+cancel_order_sub:
+    params: [input]
+    steps:
+        - cancel_order:
+            # return: ${"Order Canceled "+input}
+            return: ${"Order Canceled "}
+
+cancel_shipping_sub:
+    params: [input]
+    steps:
+        - cancel_order:
+            assign:
+               - message: "Order canceled"
+        - cancel_shipping:
+            return: ${"Shipping canceled "+message}

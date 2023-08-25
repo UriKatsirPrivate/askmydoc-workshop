@@ -1,0 +1,45 @@
+1. state_of_the_union.txt
+    What is this document? How many words?
+    Main points in 5 bullet points
+    Main opposite points. elaborate
+
+2. app.py
+    What is this file? What will the code do?
+    show the content of the file.
+    where is the usd variable initialized? show the line.
+    Suggest improvements to the my_form_post function. show sample code for the suggestions.
+
+3. main.tf
+    What is this file? What will be created? Elaborate.
+    Show the file content
+    Suggest alternatives to using terraform.
+    Main points in 10 bullet points
+    
+4. deploy.sh
+    Main points in 10 bullet points
+    provide a 50 words summary
+    Suggest alternatives.
+
+5. saga-pattern.yaml
+    What is this file? What will the code do?
+    Main points in 10 bullet points
+    show the content of the file.
+    Suggest improvements.
+    
+6. URLS
+    provide a summary. elaborate
+    Main points in 5 bullet points
+    provide a 50 words summary
+    Explain the content like I am 5 years old 
+    What can we do? 5 bullet points
+
+7.pdf
+    What is this document? How many words?
+    Main points in 5 bullet points
+    summary in 30 words
+    Explain the content like I am 5 years old 
+
+8. titanic.csv
+    What is the survival rate of passengers based on their class?
+    what is the average age of passengers who survived?
+    What is the relationship between the number of siblings/spouses and the survival rate?
