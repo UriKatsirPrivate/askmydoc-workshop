@@ -1,7 +1,4 @@
 import streamlit as st
-import os
-import tempfile
-
 
 # Page title
 st.set_page_config(page_title='Ask My Doc App')
