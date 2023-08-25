@@ -5,9 +5,5 @@
     "TEMPERATURE": 0.1,
     "TOP_P": 0.8,
     "TOP_K": 40,
-    "REGION": "us-central1",
-    "LANGCHAIN_TRACING_V2": "false",
-    "LANGCHAIN_ENDPOINT": "https://api.smith.langchain.com",
-    "LANGCHAIN_PROJECT": "experts-hub-demo",
-    "LANGCHAIN_API_KEY": "stored in secret manager"
+    "REGION": "us-central1"
 }
