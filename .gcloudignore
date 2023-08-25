@@ -1,0 +1,13 @@
+# https://cloud.google.com/sdk/gcloud/reference/topic/gcloudignore
+# To display files that will be uploaded run: gcloud meta list-files-for-upload
+myenv/
+sample-documents/
+sql/
+*.sh
+README.md
+Chinook.db
+.git/
+.chroma/
+.vscode/
+.DS_Store
+.gitattributes
