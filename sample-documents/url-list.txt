@@ -1,4 +1,3 @@
-https://www.bbc.com/news/av/world-middle-east-66107393
 https://cloud.google.com/blog/products/ai-machine-learning/the-rise-of-geneng-how-ai-changes-the-developer-role
 https://openai.com/blog/planning-for-agi-and-beyond
 https://helm.sh/docs/topics/charts/
