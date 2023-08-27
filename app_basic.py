@@ -15,5 +15,5 @@ if selected_option == 'URL':
     url_text = st.text_input('Enter your url:', placeholder='Please provide a URL.')
     query_text = st.text_input('Enter your question:', placeholder='Please provide a short summary.')
 elif selected_option == 'File Upload':
-    uploaded_file = st.file_uploader('Upload an article', type=['csv','txt', 'py', 'tf', 'sh', 'yaml', 'pdf'])
+    uploaded_file = st.file_uploader('Upload an article', type=['txt', 'py', 'tf', 'sh', 'yaml'])
     query_text = st.text_input('Enter your question:', placeholder='Please provide a short summary.')
