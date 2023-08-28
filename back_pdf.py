@@ -1,9 +1,4 @@
 import vertexai
-from langchain.agents.agent_toolkits import (
-    create_vectorstore_agent,
-    # VectorStoreToolkit,
-    # VectorStoreInfo
-)
 from langchain.chains import RetrievalQA
 from langchain.document_loaders import PyPDFLoader
 from langchain.embeddings import VertexAIEmbeddings
@@ -22,9 +17,6 @@ def generate_response_from_llm_pdf(temp_file_path, query_text):
             pages = loader.load_and_split()
             embeddings = VertexAIEmbeddings()
             store = Chroma.from_documents(pages, embeddings, collection_name='Pdf')
-            # vectorstore_info = VectorStoreInfo(name="Pdf", description=" A pdf file to answer your questions", vectorstore=store, llm=llm)
-            # toolkit = VectorStoreToolkit(vectorstore_info=vectorstore_info,llm=llm)
-            # agent_executor = create_vectorstore_agent(llm=llm, toolkit=toolkit, verbose=True)
             retriever = store.as_retriever()
             qa = RetrievalQA.from_chain_type(llm=llm, chain_type='stuff', retriever=retriever)
             return qa.run(query_text)

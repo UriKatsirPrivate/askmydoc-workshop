@@ -28,8 +28,6 @@ with st.form('myform', clear_on_submit=True):
             with st.spinner('Thinking...'):
                 if selected_option == 'URL':
                     response = generate_response_from_llm_url(url_text, query_text)
-                # elif uploaded_file.type == 'application/pdf':
-                #     response = generate_response_from_llm_pdf(temp_file_path, query_text)
                 else:
                     response = generate_response_from_llm(uploaded_file, query_text)
             st.write(response)
