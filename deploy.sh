@@ -20,6 +20,6 @@ gcloud run deploy $SERVICE_NAME \
 --service-account=$SERVICE_ACCOUNT_EMAIL \
 --execution-environment=gen2    \
 --cpu-boost \
---cpu=1 \
---memory=2Gi \
+--cpu=4 \
+--memory=8Gi \
 
