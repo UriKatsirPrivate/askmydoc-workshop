@@ -1,3 +1,20 @@
+def process_url_query(url_text, query_text):
+    try:
+        with st.spinner('Thinking...'):
+            response = generate_response_from_llm_url(url_text, query_text)
+        return response
+    except Exception as e:
+        st.error(f"Error during URL query generation or processing: {str(e)}")
+
+def process_file_query(uploaded_file, query_text):
+    try:
+        with st.spinner('Thinking...'):
+            response = generate_response_from_llm(uploaded_file, query_text)
+        return response
+    except Exception as e:
+        st.error(f"Error during file query generation or processing: {str(e)}")
+
+# Main code
 import streamlit as st
 from back import *
 from back_url import *
@@ -24,13 +41,8 @@ elif selected_option == 'File Upload':
 with st.form('myform', clear_on_submit=True):
     submitted = st.form_submit_button('Submit', disabled=not (uploaded_file or url_text))
     if submitted:
-        try:
-            with st.spinner('Thinking...'):
-                if selected_option == 'URL':
-                    response = generate_response_from_llm_url(url_text, query_text)
-                else:
-                    response = generate_response_from_llm(uploaded_file, query_text)
-            st.write(response)
-            
-        except Exception as e:
-            st.error(f"Error during query generation or processing: {str(e)}")
+        if selected_option == 'URL':
+            response = process_url_query(url_text, query_text)
+        else:
+            response = process_file_query(uploaded_file, query_text)
+        st.write(response)
