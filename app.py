@@ -16,15 +16,19 @@ def process_file_query(uploaded_file, query_text):
 
 # Main code
 import streamlit as st
-from back import *
-from back_url import *
+from back import generate_response_from_llm
+from back_url import generate_response_from_llm_url
+
+# Constants
+ACCEPTED_FILE_TYPES = ['txt', 'py', 'tf', 'sh', 'yaml']
+DOCUMENT_OPTIONS = ['Please Select', 'URL', 'File Upload']
 
 # Page title
 st.set_page_config(page_title='Ask My Doc App')
 st.title('Ask My Doc App')
 
-options = ['Please Select','File Upload','URL']
-selected_option = st.selectbox('Select Document Type', options)
+# options = ['Please Select','File Upload','URL']
+selected_option = st.selectbox('Select Document Type', DOCUMENT_OPTIONS)
 
 url_text = None
 uploaded_file = None
@@ -34,7 +38,7 @@ if selected_option == 'URL':
     url_text = st.text_input('Enter your url:', placeholder='Please provide a URL.')
     query_text = st.text_input('Enter your question:', placeholder='Please provide a short summary.')
 elif selected_option == 'File Upload':
-    uploaded_file = st.file_uploader('Upload an article', type=['txt', 'py', 'tf', 'sh', 'yaml'])
+    uploaded_file = st.file_uploader('Upload an article', type=ACCEPTED_FILE_TYPES)
     query_text = st.text_input('Enter your question:', placeholder='Please provide a short summary.')
 
 # Form input and query
