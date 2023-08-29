@@ -1,15 +1,20 @@
 import streamlit as st
 import tempfile
-from back import *
-from back_url import *
-from back_pdf import *
+from back import generate_response_from_llm
+from back_url import generate_response_from_llm_url
+from back_pdf import generate_response_from_llm_pdf
+import os
+
+# Constants
+ACCEPTED_FILE_TYPES = ['pdf','txt', 'py', 'tf', 'sh', 'yaml']
+DOCUMENT_OPTIONS = ['Please Select', 'URL', 'File Upload']
 
 # Page title
 st.set_page_config(page_title='Ask My Doc App')
 st.title('Ask My Doc App')
 
-options = ['Please Select','File Upload','URL']
-selected_option = st.selectbox('Select Document Type', options)
+# options = ['Please Select','File Upload','URL']
+selected_option = st.selectbox('Select Document Type', DOCUMENT_OPTIONS)
 
 url_text = None
 uploaded_file = None
@@ -19,7 +24,7 @@ if selected_option == 'URL':
     url_text = st.text_input('Enter your url:', placeholder='Please provide a URL.')
     query_text = st.text_input('Enter your question:', placeholder='Please provide a short summary.')
 elif selected_option == 'File Upload':
-    uploaded_file = st.file_uploader('Upload an article', type=['pdf','txt', 'py', 'tf', 'sh', 'yaml'])
+    uploaded_file = st.file_uploader('Upload an article', type=ACCEPTED_FILE_TYPES)
     query_text = st.text_input('Enter your question:', placeholder='Please provide a short summary.')
 
 # for pdf files and any other files that require temp file path for the langchain loader
