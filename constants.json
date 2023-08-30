@@ -1,7 +1,7 @@
 {
     "PROJECT_ID": "landing-zone-demo-341118",
     "MODEL_NAME": "text-bison-32k",
-    "MAX_OUTPUT_TOKENS": 1024,
+    "MAX_OUTPUT_TOKENS": 8192,
     "TEMPERATURE": 0.1,
     "TOP_P": 0.8,
     "TOP_K": 40,
