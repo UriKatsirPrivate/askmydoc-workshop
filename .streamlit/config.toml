@@ -1,3 +1,6 @@
 # https://docs.streamlit.io/library/advanced-features/configuration
 [server]
 maxUploadSize = 2
+
+[browser]
+gatherUsageStats = false
