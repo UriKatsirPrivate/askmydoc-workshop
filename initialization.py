@@ -16,12 +16,6 @@ def load_constants_locally():
     TOP_P = data["TOP_P"]
     TOP_K = data["TOP_K"]
     REGION = data["REGION"]
-    # Langsmith variables
-    # os.environ["LANGCHAIN_TRACING_V2"] = data["LANGCHAIN_TRACING_V2"]
-    # print("LANGCHAIN_TRACING_V2= " + os.environ["LANGCHAIN_TRACING_V2"])
-    # os.environ["LANGCHAIN_ENDPOINT"] = data["LANGCHAIN_ENDPOINT"]
-    # os.environ["LANGCHAIN_API_KEY"] = get_from_secrets_manager("langchain-api-key")
-    # os.environ["LANGCHAIN_PROJECT"] = data["LANGCHAIN_PROJECT"]
 
 def initialize_llm():
     load_constants_locally()
