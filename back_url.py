@@ -3,7 +3,6 @@ from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.embeddings import VertexAIEmbeddings
 from langchain.document_loaders import WebBaseLoader
-# from langchain.agents.agent_toolkits import VectorStoreInfo
 from initialization import *
 
 llm = set_up_llm()
