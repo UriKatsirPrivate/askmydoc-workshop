@@ -10,7 +10,8 @@
 * Modify constants.json:
     * replace the PROJECT_ID value with your own
 * Modify deploy.sh:
-    * Replace SERVICE_ACCOUNT_EMAIL with your own service account. The service account should have Cloud Run Invoker and Vertex AI User permissions.
+    * Replace SERVICE_ACCOUNT_EMAIL with your own service account. 
+      * The service account should have _Cloud Run Invoker_ and _Vertex AI User_ permissions.
     * Replace ARTIFACT_REGISTRY_NAME with your own.
     * Replace GOOGLE_CLOUD_PROJECT with your own.
 * Execute run-venv.sh to run the code locally.
