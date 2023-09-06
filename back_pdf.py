@@ -4,6 +4,11 @@ from langchain.document_loaders import PyPDFLoader
 from langchain.embeddings import VertexAIEmbeddings
 from langchain.vectorstores import Chroma
 from initialization import *
+# Add the 3 lines below only if running from CloudShell
+# __import__('pysqlite3')
+# import sys
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+# ======================================================
 
 
 llm = initialize_llm()
