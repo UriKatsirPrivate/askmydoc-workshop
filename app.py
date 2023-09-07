@@ -49,4 +49,6 @@ with st.form('myform', clear_on_submit=True):
             response = process_url_query(url_text, query_text)
         else:
             response = process_file_query(uploaded_file, query_text)
-        st.write(response)
+        # st.write(response)
+        st.text_area('Response', value=response["result"], height=200, max_chars=None, key=None)
+        st.text_area('Sources', value=response["source_documents"], height=400, max_chars=None, key=None)

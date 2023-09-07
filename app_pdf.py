@@ -51,7 +51,9 @@ with st.form('myform', clear_on_submit=True):
                     response = generate_response_from_llm_pdf(temp_file_path, query_text)
                 else:
                     response = generate_response_from_llm(uploaded_file, query_text)
-            st.write(response)
+            # st.write(response)
+            st.text_area('Response', value=response["result"], height=200, max_chars=None, key=None)
+            st.text_area('Sources', value=response["source_documents"], height=400, max_chars=None, key=None)
             
         except Exception as e:
             st.error(f"Error during query generation or processing: {str(e)}")

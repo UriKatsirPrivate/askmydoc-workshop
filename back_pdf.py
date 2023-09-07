@@ -23,8 +23,11 @@ def generate_response_from_llm_pdf(temp_file_path, query_text):
             embeddings = VertexAIEmbeddings()
             store = Chroma.from_documents(pages, embeddings, collection_name='Pdf')
             retriever = store.as_retriever()
-            qa = RetrievalQA.from_chain_type(llm=llm, chain_type='stuff', retriever=retriever)
-            return qa.run(query_text)
+            qa = RetrievalQA.from_chain_type(llm=llm, chain_type='stuff', retriever=retriever, return_source_documents=True)
+            result = qa({"query": query_text})
+            return(result)
+
+            # return qa.run(query_text)
         else:
             raise ValueError("Invalid file path.")
     except Exception as e:

@@ -38,9 +38,16 @@ def generate_response_from_llm(uploaded_file, query_text):
             # Create retriever interface
             retriever = db.as_retriever()
             # Create QA chain
-            qa = RetrievalQA.from_chain_type(llm=llm, chain_type='stuff', retriever=retriever)
+            qa = RetrievalQA.from_chain_type(llm=llm, chain_type='stuff', retriever=retriever, return_source_documents=True)
 
-            return qa.run(query_text)
+            result = qa({"query": query_text})
+
+            # print(result["result"])
+
+            # print(result["source_documents"])
+
+            return(result)
+            # return qa.run(query_text)
     except Exception as e:
         print("An error occurred while generating response: ", e)
         return None
