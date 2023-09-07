@@ -32,9 +32,12 @@ def generate_response_from_llm_url(url_text, query_text):
         
         store = Chroma.from_documents(split_texts, VertexAIEmbeddings(), collection_name="ruff")
 
-        qa = RetrievalQA.from_chain_type(llm=llm, chain_type='stuff', retriever=store.as_retriever())
+        qa = RetrievalQA.from_chain_type(llm=llm, chain_type='stuff', retriever=store.as_retriever(), return_source_documents=True)
 
-        return qa.run(query_text)
+        result = qa({"query": query_text})
+        return(result)
+
+        # return qa.run(query_text)
 
     except Exception as e:
         print(f"An error occurred: {e}")
