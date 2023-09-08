@@ -35,7 +35,9 @@ with st.form('myform', clear_on_submit=True):
             if uploaded_file:
                 with st.spinner('Generating response...'):
                     response = generate_response_from_llm(uploaded_file, query_text)
-                st.write(response)
+                # st.write(response)
+                st.text_area('Response', value=response["result"], height=200, max_chars=None, key=None)
+                st.text_area('Sources', value=response["source_documents"], height=400, max_chars=None, key=None)
             else:
                 st.warning("Please upload a valid file.")  # Use warning for non-blocking notification
         except Exception as e:
