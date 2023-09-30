@@ -2,7 +2,7 @@
 
 ## A Q&A Service Powered by AI (Vertex AI Palm2 model, Vector Store DB, Embeddings API, LangChain & Streamlit.) Hosted on Cloud Run.
 
-### See the code in action [here](https://askmydoc.app/). You can find sample documents and questions in the "sample-documents" folder.
+### See the code in action [here](https://askmydoc.xyz/). You can find sample documents and questions in the "sample-documents" folder.
 
 
 ### Usage
