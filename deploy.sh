@@ -1,10 +1,14 @@
 # https://cloud.google.com/sdk/gcloud/reference/run/deploy
-export GOOGLE_CLOUD_PROJECT=landing-zone-demo-341118
+export GOOGLE_CLOUD_PROJECT=<YOUR_PROJECT_ID>
 gcloud config set project $GOOGLE_CLOUD_PROJECT
-export SERVICE_NAME=askmydoc-workshop
-export ARTIFACT_REGISTRY_NAME=cloud-run-source-deploy
-export REGION=europe-west4
-export SERVICE_ACCOUNT_EMAIL=experts-hub-demo@landing-zone-demo-341118.iam.gserviceaccount.com
+export SERVICE_NAME=<YOUR_SERVICE_NAME>
+export ARTIFACT_REGISTRY_NAME=<YOUR_ARTIFACT_REGISTRY_NAME>
+export REGION=<YOUR_REGION>
+
+# Service Account
+export SERVICE_ACCOUNT_EMAIL=<YOUR_SERVICE_ACCOUNT_EMAIL>
+
+# Build and Deploy
 
 # Artifact Registry
 gcloud builds submit --tag $REGION-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/$ARTIFACT_REGISTRY_NAME/$SERVICE_NAME:latest
