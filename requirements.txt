@@ -1,8 +1,8 @@
-google-cloud-aiplatform==1.36.2
-streamlit==1.30.0
-langchain==0.0.329
+google-cloud-aiplatform==1.55.0
+streamlit==1.34.0
+langchain==0.2.5
 chromadb==0.4.17
-watchdog==3.0.0
+watchdog==4.0.1
 pypdf==3.17.0
 bs4==0.0.1
 tabulate==0.9.0
